@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-class List extends Component{
+//  Link传参方式体验 以及子路由展示
+class Page3 extends Component{
     constructor(){
         super()
         this.state ={
@@ -20,4 +20,4 @@ class List extends Component{
     }
 }
 
-export default List
+export default Page3

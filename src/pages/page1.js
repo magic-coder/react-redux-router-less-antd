@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QmAjax from '../../tools/ajax';
-
-class List extends Component{
+// 子路由展示 以及ajax方法演示
+class Page1 extends Component{
     constructor(){
         super()
         this.state ={
@@ -10,6 +10,7 @@ class List extends Component{
     }
 
     componentDidMount(){
+        // ajax 方法演示
         QmAjax.POST('/test',{a:'123'}).then(res=>{console.log(res)}).catch(err=>{console.log(err)})
         QmAjax.GET('/test',{a:'123'}).then(res=>{console.log(res)}).catch(err=>{console.log(err)})
     }
@@ -22,4 +23,4 @@ class List extends Component{
     }
 }
 
-export default List
+export default Page1

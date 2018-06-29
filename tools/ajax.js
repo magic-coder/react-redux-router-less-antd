@@ -84,7 +84,7 @@ let ajax = function (opts){
   };
 };
 
-
+// 通过 promist封装ajax的post方法
 const POST = (url,data)=>{
     return new Promise((suce,fail)=>{
         ajax({
@@ -100,6 +100,7 @@ const POST = (url,data)=>{
         });
     })
 }
+// 通过 promist封装ajax的get方法
 
 const GET=(url,data)=>{
     return new Promise((suce,fail)=>{

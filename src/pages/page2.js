@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-class List extends Component{
+    //地址栏占位符传参体验 以及子路由展示
+class Page2 extends Component{
     constructor(){
         super()
         this.state ={
@@ -17,4 +17,4 @@ class List extends Component{
     }
 }
 
-export default List
+export default Page2

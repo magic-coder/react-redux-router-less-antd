@@ -16,10 +16,15 @@ module.exports = {
                         presets: ['es2015', "stage-2",'react'],
                     }
                 },
-                exclude: /node_modules/
+                exclude: /node_modules/   //需要忽略的文件
             },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
+            {
+                 test: /\.css$/, loader: 'style-loader!css-loader' 
+                 
+            },
+            {
+                 test: /\.less$/, loader: 'style-loader!css-loader!less-loader' 
+            },
         ]
     },
     plugins:[

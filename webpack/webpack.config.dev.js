@@ -7,7 +7,7 @@ module.exports = {
         filename: 'bundle.js'  // 打包后文件
     },
     module: {
-        rules: [
+        rules: [  //文件处理的一些配置
             {
                 test: /\.(js|jsx)$/,
                 use: {
@@ -16,17 +16,29 @@ module.exports = {
                         presets: ['es2015','stage-2','react'],
                     }
                 },
-                exclude: /node_modules/
+                exclude: /node_modules/ //需要忽略的文件
             },
-            { test: /\.css$/, loader: 'style-loader!css-loader' },
-            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' },
-            
+            { 
+                test: /\.css$/, loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.less$/, loader: 'style-loader!css-loader!less-loader' 
+            },
         ]
     },
     devServer: {
         inline: true,
         contentBase: path.resolve(__dirname,'../'),
-    }
+        proxy: {
+            // '/api': {    所有以api开头的请求都会做跨域处理
+            //     target: 'http://****',  需要跨域到某个url
+            //     changeOrigin: true
+                // pathRewrite: {
+                //     '^/api': '' //跨域过去的请求路径是否替换
+                // }
+            // }
+            }
+    },
     // plugins:[
     //     new HtmlWebpackPlugin({
     //         title:"react",

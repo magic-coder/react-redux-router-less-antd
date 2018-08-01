@@ -1,3 +1,4 @@
+'use strict';
 const path = require('path');
 // const webpack = require('webpack');
 module.exports = {
@@ -12,8 +13,8 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['es2015','stage-2','react'],
+                    query: {
+                        presets: ['latest','es2015','stage-2','react'],
                     }
                 },
                 exclude: /node_modules/ //需要忽略的文件
@@ -34,13 +35,13 @@ module.exports = {
         inline: true,
         contentBase: path.resolve(__dirname,'../'),
         proxy: {
-            // '/api': {    所有以api开头的请求都会做跨域处理
-            //     target: 'http://****',  需要跨域到某个url
-            //     changeOrigin: true
-                // pathRewrite: {
-                //     '^/api': '' //跨域过去的请求路径是否替换
-                // }
-            // }
+            '/api': {   
+                target: 'http://39.105.61.16:8088/web-1',  
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/' //跨域过去的请求路径是否替换
+                }
+            }
             }
     },
     // plugins:[

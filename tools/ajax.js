@@ -9,6 +9,16 @@
 **success: 请求成功后的回调函数;
 **error: 请求失败后的回调函数;
 */
+
+
+// 根据地址栏区分本地环境和线上环境
+var baseUrl  = ""
+if(window.location.host.indexOf("localhost")>-1){
+  baseUrl="/api"
+}else{
+  baseUrl=window.location.protocol+"//"+window.location.host
+}
+
 let configResText = function (responseText, resTextType){
   return resTextType == 'html' ? responseText : JSON.parse(responseText);
 };
@@ -89,13 +99,13 @@ const POST = (url,data)=>{
     return new Promise((suce,fail)=>{
         ajax({
             method:'POST',
-            url: url,
+            url: baseUrl+url,
             data: data,
             success: (res)=> {
-                suce(res)
+              suce(res)
             },
             error:(err)=>{
-                fail(err)
+              fail(err)
             }
         });
     })
@@ -105,13 +115,13 @@ const POST = (url,data)=>{
 const GET=(url,data)=>{
     return new Promise((suce,fail)=>{
         ajax({
-            url: url,
+            url: baseUrl+url,
             data: data,
             success: (res)=> {
-                suce(res)
+              suce(res)
             },
             error:(err)=>{
-                fail(err)
+              fail(err)
             }
         });
     })

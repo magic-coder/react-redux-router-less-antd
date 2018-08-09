@@ -8,9 +8,9 @@ import 'antd-mobile/dist/antd-mobile.css';
 import {createStore,combineReducers } from 'redux'
 import {Provider} from 'react-redux'
 import { HashRouter as Router,Route,Link} from 'react-router-dom'
-import {actionDemo} from './store/action/actionDemo'
-import reducerDemo from './store/reducer/reducerDemo'
+import navbar from './store/reducer/NavBarReducer'
 
+import MyNavBar from "./components/MyNavBar"
 
 const List =({match})=>(
     <div>
@@ -31,7 +31,7 @@ const List =({match})=>(
 
 // 我们利用combineReducers 把多个 reducer进行合并 内部传入{key:reducer} 就可以把reducer中的state分开包装到store中 例子中的state被包装到了 demo下 可以通过 state.demo.data 调用到
 const RootReducer = combineReducers(
-    {demo:reducerDemo}
+    {navbar:navbar}
 )
 
 // createStore 来生成我们redux需要的store
@@ -40,15 +40,18 @@ const store = createStore(RootReducer)
 ReactDOM.render(
    // Provider 组件是react-redux 中的重要组件，将生成的store通过props方式获取到store并通过上下文传递到子组件中，它内部包含高阶函数（组件）concent用于生成一个组件，并且把需要是state和dispatch挂载到子组件的props上可以连接和操纵store。
    // Provider
-    <Provider store={store}>  
-    {/* 此处注意Router 的引入方式 */}
-        <Router>
-            <div>
-                {/* 只能写第一层路由，子路由需要写在组件内 */}
-                <Route path="/" exact component={App} />
-                <Route path="/list" component={List} />
-            </div>
-        </Router>
+    <Provider store={store}>
+        <div>
+           <MyNavBar />
+        {/* 此处注意Router 的引入方式 */}
+            <Router>
+                <div>
+                    {/* 只能写第一层路由，子路由需要写在组件内 */}
+                    <Route path="/" exact component={App} />
+                    <Route path="/list" component={List} />
+                </div>
+            </Router>
+        </div>
     </Provider>
     ,
     document.getElementById('app'))

@@ -3,7 +3,6 @@ import "./MyNavBar.less"
 import { NavBar, Icon } from 'antd-mobile';
 import {connect} from 'react-redux';
 
-
 //  普通组件以及less示例
 
 // 头部的tab 数据在redux里面 这样方便任何页面都可以修改本组件的title  左侧有个返回按钮 通过redux里面的 ischild控制

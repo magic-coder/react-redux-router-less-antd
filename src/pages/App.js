@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { TabBar } from 'antd-mobile';
+import { TabBar} from 'antd-mobile';
 import {connect} from "react-redux"
 
 import {ischild,changetitle} from '../store/action/NavBarAction'   //引入action
 import CardList from '../components/CardList'
+
+import SmallHome from "../components/SmallHome"
+
 import "./App.less"
 
 
@@ -14,11 +17,12 @@ class App extends Component{
             selectedTab:'blueTab',
             hidden: false,
             fullScreen: true,
+         
          };
     }
 
     render(){
-        return(
+        return(     
             <div style={{position: 'fixed', height: '100%', width: '100%', bottom:0,paddingTop:"45px",zIndex:-1}}>
             <TabBar
               unselectedTintColor="#949494"
@@ -27,7 +31,7 @@ class App extends Component{
               hidden={this.state.hidden}
             >
               <TabBar.Item
-                title="首页"
+                title="微官网"
                 key="Life"
                 icon={<div style={{
                   width: '22px',
@@ -44,7 +48,7 @@ class App extends Component{
                 selected={this.state.selectedTab === 'blueTab'}
                 badge={1}
                 onPress={() => {
-                  this.props.CHANGETITLE("首页")
+                  this.props.CHANGETITLE("微官网")
 
                   this.setState({
                     selectedTab: 'blueTab',
@@ -52,7 +56,8 @@ class App extends Component{
                 }}
                 data-seed="logId"
               >
-             <CardList last="首页"/>
+                    {/* 微官网组件 */}
+                  <SmallHome />
                 {/* {this.renderContent('Life')} */}
               </TabBar.Item>
               <TabBar.Item
@@ -70,12 +75,12 @@ class App extends Component{
                     background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
                   />
                 }
-                title="口碑"
+                title="预约"
                 key="Koubei"
                 badge={'new'}
                 selected={this.state.selectedTab === 'redTab'}
                 onPress={() => {
-                  this.props.CHANGETITLE("口碑")
+                  this.props.CHANGETITLE("预约")
 
                   this.setState({
                     selectedTab: 'redTab',
@@ -83,7 +88,7 @@ class App extends Component{
                 }}
                 data-seed="logId1"
               >
-               <CardList last="口碑"/>
+               <CardList last="预约"/>
                 {/* {this.renderContent('Koubei')} */}
               </TabBar.Item>
               <TabBar.Item
@@ -101,18 +106,18 @@ class App extends Component{
                     background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
                   />
                 }
-                title="朋友"
+                title="课程"
                 key="Friend"
                 dot
                 selected={this.state.selectedTab === 'greenTab'}
                 onPress={() => {
-                  this.props.CHANGETITLE("朋友")
+                  this.props.CHANGETITLE("课程")
                   this.setState({
                     selectedTab: 'greenTab',
                   });
                 }}
               >
-               <CardList last="朋友"/>
+               <CardList last="课程"/>
                 {/* {this.renderContent('Friend')} */}
               </TabBar.Item>
               <TabBar.Item
